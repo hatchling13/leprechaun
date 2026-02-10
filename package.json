@@ -7,6 +7,7 @@
     "prepare": "panda codegen",
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "deploy": "pnpm build && wrangler deploy",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "preview": "vite preview"
@@ -25,6 +26,7 @@
     "vite-tsconfig-paths": "^6.0.5"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.24.0",
     "@effect/language-service": "^0.72.1",
     "@pandacss/dev": "^1.8.1",
     "@types/node": "^24.10.1",
@@ -33,7 +35,8 @@
     "globals": "^16.5.0",
     "oxlint": "^1.42.0",
     "typescript": "~5.9.3",
-    "vite": "npm:rolldown-vite@7.2.5"
+    "vite": "npm:rolldown-vite@7.2.5",
+    "wrangler": "^4.64.0"
   },
   "pnpm": {
     "overrides": {
