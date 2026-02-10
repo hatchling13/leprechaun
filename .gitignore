@@ -23,6 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 
+## Tanstack Start
+.tanstack
+
 ## Panda
 styled-system
 styled-system-studio
+
+## Environment Variables
+.env
