@@ -1,16 +1,23 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import tsConfigPaths from "vite-tsconfig-paths";
+// import { fileURLToPath } from "node:url";
+// import path from "node:path";
+//
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@panda": path.resolve(__dirname, "./styled-system"),
-    },
+  server: {
+    port: 3000,
   },
+  plugins: [
+    tsConfigPaths({
+      projects: ["./tsconfig.json"],
+    }),
+    tanstackStart(),
+    viteReact(),
+  ],
 });
