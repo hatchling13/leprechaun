@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "wrangler types && vite",
+    "build": "wrangler types && tsc -b && vite build",
     "run-deploy": "wrangler deploy",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.24.0",
+    "@cloudflare/workers-types": "^4.20260210.0",
     "@effect/language-service": "^0.72.1",
     "@pandacss/dev": "^1.8.1",
     "@types/node": "^24.10.1",
