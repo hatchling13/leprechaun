@@ -2,6 +2,10 @@
   "name": "leprechaun",
   "compatibility_date": "2026-02-16",
   "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+  },
   "observability": {
     "enabled": true,
   },

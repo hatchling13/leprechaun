@@ -23,6 +23,7 @@
     "satori": "^0.19.1",
     "temporal-polyfill": "^0.3.0",
     "vite-tsconfig-paths": "^6.0.5",
+    "wrangler": "^4.65.0",
     "yoga-wasm-web": "^0.3.3"
   },
   "devDependencies": {
