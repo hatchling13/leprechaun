@@ -2,14 +2,19 @@ import { Effect } from "effect";
 
 export const svg2Png = (svg: string) =>
   Effect.async<string, Error>((resume) => {
+    const svgBlob = svg.includes("xmlns=")
+      ? svg
+      : svg.replace("<svg", '<svg xmlns="http://www.w3.org/2000/svg"');
+
     const image = new Image();
-    const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
+
+    const url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgBlob);
 
     image.onload = () => {
       try {
         const canvas = document.createElement("canvas");
-        canvas.width = image.naturalWidth;
-        canvas.height = image.naturalHeight;
+        canvas.width = image.naturalWidth || 1600;
+        canvas.height = image.naturalHeight || 900;
 
         const context = canvas.getContext("2d");
 
@@ -24,20 +29,16 @@ export const svg2Png = (svg: string) =>
         resume(Effect.succeed(dataUrl));
       } catch (error) {
         resume(Effect.fail(error as Error));
-      } finally {
-        URL.revokeObjectURL(url);
       }
     };
 
     image.onerror = (error) => {
-      URL.revokeObjectURL(url);
-
-      if (typeof error === "string") {
-        resume(Effect.fail(new Error(error)));
-        return;
-      }
-
-      resume(Effect.fail(new Error("Failed to load SVG image onto canvas")));
+      console.error("Canvas SVG Render Error:", error);
+      const message =
+        typeof error === "string"
+          ? error
+          : "Failed to load SVG onto canvas (Check for missing fonts or invalid SVG tags)";
+      resume(Effect.fail(new Error(message)));
     };
 
     image.src = url;
