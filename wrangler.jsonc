@@ -1,13 +1,7 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "leprechaun",
-  "main": "@tanstack/react-start/server-entry", // Framework handles the pathing
-  "compatibility_date": "2026-02-10",
+  "compatibility_date": "2026-02-16",
   "compatibility_flags": ["nodejs_compat"],
-  "assets": {
-    "directory": "dist/client",
-    "binding": "ASSETS",
-  },
   "observability": {
     "enabled": true,
   },

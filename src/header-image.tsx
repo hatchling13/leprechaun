@@ -3,9 +3,9 @@ export const HeaderImage = () => (
     style={{
       display: "flex",
       backgroundColor: "teal",
-      width: "1600px",
-      height: "900px",
-      fontSize: "64px",
+      width: 1600,
+      height: 900,
+      fontSize: 64,
     }}
   >
     HI
